@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { LoggingService } from '../logging.service';
 
 @Component({
   selector: 'app-new-account',
@@ -13,6 +14,11 @@ export class NewAccountComponent {
       name: accountName,
       status: accountStatus
     });
-    console.log('A server status changed, new status: ' + accountStatus);
+
+    // Cach dung SAI
+    const logService = new LoggingService();
+    logService.logStatusChange(accountStatus);
+    
+    // console.log('A server status changed, new status: ' + accountStatus);
   }
 }
